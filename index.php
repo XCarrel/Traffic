@@ -16,9 +16,18 @@ $green = false;
 <head>
     <meta charset="UTF-8">
     <title>Traffic</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/traffic.css">
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </head>
 <body>
-<div class="container"
+<div class="container text-center">
+    <div class="slate">
+        <div class="lamp red"></div>
+        <div class="lamp off"></div>
+        <div class="lamp off"></div>
+    </div>
+</div>
 </body>
 </html>
 
