@@ -1,16 +1,5 @@
-<?php
-/**
- * File : index.php
- * Author : X. Carrel
- * Created : 2020-08-17
- * Modified last :
- **/
+<?php require_once ('src/home.php'); ?>
 
-$red = true;
-$yellow = false;
-$green = false;
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +12,11 @@ $green = false;
 <body>
 <div class="container text-center">
     <div class="slate">
-        <div class="lamp red"></div>
-        <div class="lamp off"></div>
-        <div class="lamp off"></div>
-    </div>
+        <div class="lamp <?= $red ? 'red' : 'off' ?>"></div>
+        <div class="lamp <?= $yellow ? 'yellow' : 'off' ?>"></div>
+        <div class="lamp <?= $green ? 'green' : 'off' ?>"></div>
+    </div><br>
+    <a class="btn btn-primary" href="?state=<?= ($state+1) % 4 ?>">=></a>
 </div>
 </body>
 </html>
