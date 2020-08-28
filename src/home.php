@@ -6,34 +6,51 @@
  * Modified last :
  **/
 
-if (isset($_GET['state'])) {
-    $state = $_GET['state'];
-} else {
-    $state = 0;
-}
+// Make sure state is defined
+$state = isset($_GET['state']) ? $_GET['state'] : 0;
 
+// Define lamps states
 switch ($state) {
     case 0: // stop
-        $red = true;
-        $yellow = false;
-        $green = false;
+        $lamps = [
+            'red' => true,
+            'yellow' => false,
+            'green' => false
+        ];
         break;
 
     case 1: // ready
-        $red = true;
-        $yellow = true;
-        $green = false;
+        $lamps = [
+            'red' => true,
+            'yellow' => true,
+            'green' => false
+        ];
         break;
 
     case 2: // go
-        $red = false;
-        $yellow = false;
-        $green = true;
+        $lamps = [
+            'red' => false,
+            'yellow' => false,
+            'green' => true
+        ];
         break;
 
     case 3: // slow down
-        $red = false;
-        $yellow = true;
-        $green = false;
+        $lamps = [
+            'red' => false,
+            'yellow' => true,
+            'green' => false
+        ];
+        break;
+
+    default: // same as stop
+        $lamps = [
+            'red' => true,
+            'yellow' => false,
+            'green' => false
+        ];
         break;
 }
+
+// Pick next state
+$nextstate = ($state + 1) % 4;

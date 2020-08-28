@@ -1,4 +1,4 @@
-<?php require_once ('src/home.php'); ?>
+<?php require_once('src/home.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,11 +12,12 @@
 <body>
 <div class="container text-center">
     <div class="slate">
-        <div class="lamp <?= $red ? 'red' : 'off' ?>"></div>
-        <div class="lamp <?= $yellow ? 'yellow' : 'off' ?>"></div>
-        <div class="lamp <?= $green ? 'green' : 'off' ?>"></div>
-    </div><br>
-    <a class="btn btn-primary" href="?state=<?= ($state+1) % 4 ?>">=></a>
+        <?php foreach ($lamps as $lamp => $state) { ?>
+            <div class="lamp <?= $state ? $lamp : 'off' ?>"></div>
+        <?php } ?>
+    </div>
+    <br>
+    <a class="btn btn-primary" href="?state=<?= $nextstate ?>">=></a>
 </div>
 </body>
 </html>
