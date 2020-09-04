@@ -6,51 +6,14 @@
  * Modified last :
  **/
 
+require_once 'TrafficLight.php';
+
 // Make sure state is defined
 $state = isset($_GET['state']) ? $_GET['state'] : 0;
 
-// Define lamps states
-switch ($state) {
-    case 0: // stop
-        $lamps = [
-            'red' => true,
-            'yellow' => false,
-            'green' => false
-        ];
-        break;
+$light = new TrafficLight();
 
-    case 1: // ready
-        $lamps = [
-            'red' => true,
-            'yellow' => true,
-            'green' => false
-        ];
-        break;
-
-    case 2: // go
-        $lamps = [
-            'red' => false,
-            'yellow' => false,
-            'green' => true
-        ];
-        break;
-
-    case 3: // slow down
-        $lamps = [
-            'red' => false,
-            'yellow' => true,
-            'green' => false
-        ];
-        break;
-
-    default: // same as stop
-        $lamps = [
-            'red' => true,
-            'yellow' => false,
-            'green' => false
-        ];
-        break;
-}
+$light->setState($state);
 
 // Pick next state
 $nextstate = ($state + 1) % 4;

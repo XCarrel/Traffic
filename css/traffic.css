@@ -30,6 +30,14 @@ body {
     background-color: orange;
 }
 
+.blinking {
+    animation: blinkingBackground 1s infinite;
+}
+@keyframes blinkingBackground{
+    0%		{ background-color: black;}
+    100%	{ background-color: orange;}
+}
+
 .off {
     background-color: black;
 }

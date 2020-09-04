@@ -12,12 +12,12 @@
 <body>
 <div class="container text-center">
     <div class="slate">
-        <?php foreach ($lamps as $lamp => $state) { ?>
-            <div class="lamp <?= $state ? $lamp : 'off' ?>"></div>
-        <?php } ?>
+        <div class="lamp <?= $light->red ? 'red' : 'off' ?>"></div>
+        <div class="lamp <?= $light->yellow ? 'yellow' : 'off' ?>"></div>
+        <div class="lamp <?= $light->green ? 'green' : 'off' ?>"></div>
     </div>
     <br>
-    <a class="btn btn-primary" href="?state=<?= $nextstate ?>">=></a>
+    <a class="btn btn-primary" href="?state=<?= $light->nextstate($state) ?>">=></a>
 </div>
 </body>
 </html>
