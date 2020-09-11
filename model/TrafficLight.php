@@ -90,4 +90,12 @@ class TrafficLight
             default: // don't change
         }
     }
+
+    /**
+     * Put the light in HS state
+     */
+    public function canStop()
+    {
+        return (array_search($this->state,[0,2]) !== false);
+    }
 }

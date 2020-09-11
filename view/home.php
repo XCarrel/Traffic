@@ -8,7 +8,9 @@
     </div>
     <br>
     <a class="btn btn-primary" href="?action=next">=></a>
-    <a class="btn btn-primary" href="?action=hs">Suspendre</a>
+    <?php if($light->canStop()){ ?>
+    <br><a class="btn btn-primary" href="?action=hs">Suspendre</a>
+    <?php } ?>
 </div>
 
 <?php
