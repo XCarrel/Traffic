@@ -9,12 +9,19 @@ require_once 'model/TrafficLight.php';
 
 $light = isset($_SESSION['light']) ? unserialize($_SESSION['light']) : new TrafficLight(0);
 
-if (isset($_GET['next'])) {
-    $light->nextState();
+if (isset($_GET['action'])) {
+    $action = $_GET['action'];
 }
 
-if (isset($_GET['hs'])) {
-    $light->stop();
+switch ($action) {
+    case 'next':
+        $light->nextState();
+        break;
+    case 'hs':
+        $light->stop();
+        break;
+    default:
+        $light->stop();
 }
 
 $_SESSION['light'] = serialize($light);

@@ -7,8 +7,8 @@
         <div class="lamp <?= $light->green == LampState::ON ? 'green' : 'off' ?>"></div>
     </div>
     <br>
-    <a class="btn btn-primary" href="?next">=></a>
-    <a class="btn btn-primary" href="?hs">Suspendre</a>
+    <a class="btn btn-primary" href="?action=next">=></a>
+    <a class="btn btn-primary" href="?action=hs">Suspendre</a>
 </div>
 
 <?php
