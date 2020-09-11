@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Traffic</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="css/traffic.css">
+    <link rel="stylesheet" href="view/css/traffic.css">
     <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
 </head>
 <body>
