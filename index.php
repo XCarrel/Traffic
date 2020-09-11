@@ -1,4 +1,9 @@
-<?php require_once('src/home.php'); ?>
+<?php
+session_start();
+require_once 'src/TrafficLight.php';
+require_once 'src/LampState.php';
+require_once('src/home.php');
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,12 +17,13 @@
 <body>
 <div class="container text-center">
     <div class="slate">
-        <div class="lamp <?= $light->red ? 'red' : 'off' ?>"></div>
-        <div class="lamp <?= $light->yellow ? 'yellow' : 'off' ?>"></div>
-        <div class="lamp <?= $light->green ? 'green' : 'off' ?>"></div>
+        <div class="lamp <?= $light->red == LampState::ON ? 'red' : 'off' ?>"></div>
+        <div class="lamp <?= $light->yellow == LampState::ON ? 'yellow' : ($light->yellow == LampState::BLINK ? 'blinking' : 'off') ?>"></div>
+        <div class="lamp <?= $light->green == LampState::ON ? 'green' : 'off' ?>"></div>
     </div>
     <br>
-    <a class="btn btn-primary" href="?state=<?= $light->nextstate($state) ?>">=></a>
+    <a class="btn btn-primary" href="?next">=></a>
+    <a class="btn btn-primary" href="?hs">Suspendre</a>
 </div>
 </body>
 </html>

@@ -6,14 +6,16 @@
  * Modified last :
  **/
 
-require_once 'TrafficLight.php';
+$light = isset($_SESSION['light']) ? unserialize($_SESSION['light']) : new TrafficLight(0);
 
-// Make sure state is defined
-$state = isset($_GET['state']) ? $_GET['state'] : 0;
+if (isset($_GET['next'])) {
+    $light->nextState();
+}
 
-$light = new TrafficLight();
+if (isset($_GET['hs'])) {
+    $light->stop();
+}
 
-$light->setState($state);
+$_SESSION['light'] = serialize($light);
 
-// Pick next state
-$nextstate = ($state + 1) % 4;
+
