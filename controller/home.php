@@ -5,6 +5,7 @@
  * Created : 2020-08-17
  * Modified last :
  **/
+require_once 'model/TrafficLight.php';
 
 $light = isset($_SESSION['light']) ? unserialize($_SESSION['light']) : new TrafficLight(0);
 
@@ -18,4 +19,4 @@ if (isset($_GET['hs'])) {
 
 $_SESSION['light'] = serialize($light);
 
-
+require_once "view/home.php";
