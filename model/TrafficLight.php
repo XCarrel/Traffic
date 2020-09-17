@@ -98,4 +98,27 @@ class TrafficLight
     {
         return (array_search($this->state,[0,2]) !== false);
     }
+
+    /**
+     * return the time (in milliseconds) the light is supposed to stay in its current state
+     */
+    public function stateDuration()
+    {
+        switch ($this->state) {
+            case 0: // Stop
+                return 10*1000;
+                break;
+            case 1: // Get ready
+                return 1*1000;
+                break;
+            case 2: // Go
+                return 5*1000;
+                break;
+            case 3: // Slow down
+                return 1*1000;
+                break;
+            default:
+                return null;
+        }
+    }
 }
