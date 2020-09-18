@@ -1,6 +1,7 @@
 <?php
 
 require_once 'model/LampState.php';
+require_once 'model/TrafficLightState.php';
 
 class TrafficLight
 {
@@ -11,7 +12,7 @@ class TrafficLight
 
     public function __construct($state)
     {
-        $this->setState(0);
+        $this->setState(TrafficLightState::STOP);
     }
 
     /**
@@ -22,27 +23,27 @@ class TrafficLight
     {
         $this->state = $state;
         switch ($state) {
-            case 0: // Stop
+            case TrafficLightState::STOP:
                 $this->red = LampState::ON;
                 $this->yellow = LampState::OFF;
                 $this->green = LampState::OFF;
                 break;
-            case 1: // Get ready
+            case TrafficLightState::READY:
                 $this->red = LampState::ON;
                 $this->yellow = LampState::ON;
                 $this->green = LampState::OFF;
                 break;
-            case 2: // Go
+            case TrafficLightState::GO:
                 $this->red = LampState::OFF;
                 $this->yellow = LampState::OFF;
                 $this->green = LampState::ON;
                 break;
-            case 3: // Slow down
+            case TrafficLightState::SLOW:
                 $this->red = LampState::OFF;
                 $this->yellow = LampState::ON;
                 $this->green = LampState::OFF;
                 break;
-            case 4: // HS
+            case TrafficLightState::HS:
                 $this->red = LampState::OFF;
                 $this->yellow = LampState::BLINK;
                 $this->green = LampState::OFF;
@@ -60,18 +61,18 @@ class TrafficLight
     public function nextState()
     {
         switch ($this->state) {
-            case 0: // Stop
-                $this->setState(1);
+            case TrafficLightState::STOP:
+                $this->setState(TrafficLightState::READY);
                 break;
-            case 1: // Get ready
-                $this->setState(2);
+            case TrafficLightState::READY:
+                $this->setState(TrafficLightState::GO);
                 break;
-            case 2: // Go
-                $this->setState(3);
+            case TrafficLightState::GO:
+                $this->setState(TrafficLightState::SLOW);
                 break;
-            case 3: // Slow down
-            case 4: // HS
-                $this->setState(0);
+            case TrafficLightState::SLOW:
+            case TrafficLightState::HS:
+                $this->setState(TrafficLightState::STOP);
                 break;
             default: // don't change
         }
@@ -83,9 +84,9 @@ class TrafficLight
     public function stop()
     {
         switch ($this->state) {
-            case 0: // Stop
-            case 2: // Go
-                $this->setState(4);
+            case TrafficLightState::STOP:
+            case TrafficLightState::GO:
+                $this->setState(TrafficLightState::HS);
                 break;
             default: // don't change
         }
@@ -96,7 +97,7 @@ class TrafficLight
      */
     public function canStop()
     {
-        return (array_search($this->state,[0,2]) !== false);
+        return (array_search($this->state,[TrafficLightState::STOP,TrafficLightState::GO]) !== false);
     }
 
     /**
@@ -105,16 +106,16 @@ class TrafficLight
     public function stateDuration()
     {
         switch ($this->state) {
-            case 0: // Stop
+            case TrafficLightState::STOP:
                 return 10*1000;
                 break;
-            case 1: // Get ready
+            case TrafficLightState::READY:
                 return 1*1000;
                 break;
-            case 2: // Go
+            case TrafficLightState::GO:
                 return 5*1000;
                 break;
-            case 3: // Slow down
+            case TrafficLightState::SLOW:
                 return 1*1000;
                 break;
             default:
