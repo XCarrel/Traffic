@@ -12,7 +12,7 @@ class TrafficLight
 
     public function __construct($state)
     {
-        $this->setState(TrafficLightState::STOP);
+        $this->setState(TrafficLightState::HS);
     }
 
     /**
@@ -93,7 +93,7 @@ class TrafficLight
     }
 
     /**
-     * Put the light in HS state
+     * True if the light can be put in HS state
      */
     public function canStop()
     {

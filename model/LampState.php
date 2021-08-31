@@ -1,6 +1,6 @@
 <?php
 
-
+// All states of one lamp
 abstract class LampState
 {
     const OFF = 0;

@@ -1,11 +1,11 @@
 <?php
 
-
+// All supported states of our traffic light
 abstract class TrafficLightState
 {
-    const STOP = 0;
-    const READY = 1;
-    const GO = 2;
-    const SLOW = 3;
-    const HS = 4;
+    const STOP = 0;     // red
+    const READY = 1;    // red and yellow
+    const GO = 2;       // green
+    const SLOW = 3;     // yellow
+    const HS = 4;       // blinking yellow
 }
