@@ -7,12 +7,12 @@
         <div class="lamp <?= $light->green == LampState::ON ? 'green' : 'off' ?>"></div>
     </div>
     <br>
-    <?php if($light->canStop()){ ?>
+    <?php if($light->canStop()) : ?>
         <br><a class="btn btn-primary" href="?action=hs">Suspendre</a>
-    <?php } ?>
-    <?php if($light->state == 4){ ?>
+    <?php endif ?>
+    <?php if($light->state == TrafficLightState::HS) : ?>
         <br><a class="btn btn-primary" href="?action=next">Reprendre</a>
-    <?php } ?>
+    <?php endif ?>
 </div>
 
 <?php
